@@ -4,12 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Cultura Músical</title>
 </head>
 
 <body>
-<h1>Estrutura inicial</h1>
+    <div id="container">
+        <div id="box">
+            <h1>Seleção de Músicas</h1>
+
+            <br>
+            <div id="container-botoes">
+                <a href="/brasileira" class="btn brasileira">
+                    <span>BRASILEIRA</span>
+                </a>
+
+                <a href="/estrangeira" class="btn estrangeira">
+                    <span>ESTRANGEIRA</span>
+                </a>
+
+                <a href="/classica" class="btn classica">
+                    <span>CLÁSSICA</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>

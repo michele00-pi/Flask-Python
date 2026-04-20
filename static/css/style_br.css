@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#container {
+
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/static/images/brasil2.png);
+    display: flex;
+    /* ativa o flexbox (organiza os elementos) */
+    flex-direction: row;
+    /* organiza os itens em linha (horizontal) */
+    justify-content: center;
+    /* centraliza no eixo horizontal */
+    align-items: center;
+    /* centraliza no eixo vertical */
+    padding: 20px;
+
+}
+
+#box {
+    width: 90%;
+    /* ocupa mais espaço em telas pequenas */
+    min-height: 500px;
+    max-width: 800px;
+    /* limite em telas grandes */
+    opacity: 98%;
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+#brasilInput {
+
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 1.2em;
+
+}
+
+#btnLimpar {
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 0.9em;
+    border: 0;
+    width: 35%;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+#btnLimpar:hover {
+    background-color: rgb(216, 6, 6);
+    color: white;
+}
+
+#listarBtn {
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 0.9em;
+    border: 0;
+    width: 35%;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+form>button:hover {
+    background-color: rgb(16, 16, 16);
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#voltar {
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 0.9em;
+    border: 0;
+    width: 35%;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+#voltar:hover {
+    background-color: rgb(16, 16, 16);
+    color: white;
+}
+
+#divLista{
+
+    align-items: center;
+    justify-content: center;
+
+}

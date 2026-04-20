@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_br.css') }}">
+    <title>Músicas Brasil</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="box">
+
+            <h1>Músicas Brasileiras</h1>
+            <br>
+            <form action="{{ url_for('page_brasileira') }}" method="post">
+                <input type="text" placeholder="Nome da música" name="BRASILINPUT" id="brasilInput" required>
+                <br><br>
+                <button id="listarBtn">Listar</button>
+            </form>
+            <br>
+            <form action="{{ url_for('page_brasileira') }}" method="get">
+                <button id="btnLimpar">Limpar</button>
+            </form>
+            <br>
+            <div id="divLista">
+                <h2>Músicas listadas</h2>
+                <ol>
+                    {%for musica in lista_brasil%}
+                    <li>{{musica}}</li>
+                    {% endfor %}
+                </ol>
+                <br><br>
+                <form action="{{ url_for('main') }}">
+                    <button id="voltar">Voltar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
