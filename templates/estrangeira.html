@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_gringo.css') }}">
+    <title>Músicas gringas</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="box">
+            <h1>Músicas estrangeiras</h1>
+            <br>
+
+            <form action="{{url_for('page_estrangeira')}}" method="post">
+                <input type="text" placeholder="Nome da música" name="ESTRANGEIROINPUT" id="ESTRANGEIROINPUT" required>
+                <input type="text" placeholder="Tempo de duração" name="TEMPOINPUT" id="TEMPOINPUT" required>
+                <br>
+                <br>
+                <button id="listarBtn">Listar</button>
+            </form>
+            <br>
+            <form action="{{url_for('page_estrangeira')}}" method="get">
+                <button id="limparBtn">Limpar</button>
+            </form>
+            <br>
+            <form action="{{ url_for('main') }}">
+                <button id="voltarBtn">Voltar</button>
+            </form>
+
+            <h2>Músicas listadas</h2>
+
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Duração</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for musica in lista_gringo%}
+                    <tr>
+                        <td>{{musica.Nome}}</td>
+                        <td>{{musica.Tempo}}</td>
+                       
+                    </tr> 
+                    {%endfor%}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

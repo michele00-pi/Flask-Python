@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 lista_brasil = []
+lista_gringo = []
 
 @app.route("/") #Pagina inicial
 
@@ -25,10 +26,27 @@ def page_brasileira():
     return render_template("brasileira.html", lista_brasil=lista_brasil)
 
 
-@app.route("/estrangeira") #Pagina das musicas estrangeiras
+@app.route("/estrangeira", methods=["POST", "GET"]) #Pagina das musicas estrangeiras
 
 def page_estrangeira():
-    return render_template("estrangeira.html")
+
+    if request.method == 'POST':
+
+        nome = request.form.get("ESTRANGEIROINPUT")
+        tempo = request.form.get("TEMPOINPUT")
+
+        lista_gringo.append(
+            {
+            "Nome": nome,
+            "Tempo": tempo
+            }
+        )
+
+    if request.method == 'GET':
+        
+        lista_gringo.clear()
+    
+    return render_template("estrangeira.html", lista_gringo=lista_gringo)
 
 @app.route("/classica") #Pagina das musicas classicas
 

@@ -12,7 +12,7 @@
     <div id="container">
         <div id="box">
 
-            <h1>Músicas Brasileiras</h1>
+            <h1 id="h1title">Músicas Brasileiras</h1>
             <br>
             <form action="{{ url_for('page_brasileira') }}" method="post">
                 <input type="text" placeholder="Nome da música" name="BRASILINPUT" id="brasilInput" required>
@@ -24,18 +24,20 @@
                 <button id="btnLimpar">Limpar</button>
             </form>
             <br>
-            <div id="divLista">
+            <form action="{{ url_for('main') }}">
+                    <button id="voltar">Voltar</button>
+            </form>
+
                 <h2>Músicas listadas</h2>
+                <h3>
                 <ol>
                     {%for musica in lista_brasil%}
                     <li>{{musica}}</li>
                     {% endfor %}
-                </ol>
+                </ol></h3>
                 <br><br>
-                <form action="{{ url_for('main') }}">
-                    <button id="voltar">Voltar</button>
-                </form>
-            </div>
+                
+            
         </div>
     </div>
 </body>
