@@ -1,17 +1,14 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-image: url("/static/images/brasil2.png");
+    background-image: url("/static/images/fundo_classica.png");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; /* Não repete a imagem */
-    background-attachment: fixed; /* Opcional: fixa a imagem ao rolar a página */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
-h1, h2{
-    color:white;
-}
-h3{
-    color: white;
-    font-weight: lighter;
+
+h1,h2{
+    color: #fff;
 }
 
 #container {
@@ -26,35 +23,35 @@ h3{
     /* centraliza no eixo horizontal */
     align-items: center;
     /* centraliza no eixo vertical */
+    
 
 }
 
 #box {
-   
+
     width: 35%;
     /* ocupa mais espaço em telas pequenas */
     min-height: 600px;
     max-width: 800px;
     /* limite em telas grandes */
-    
+    opacity: 98%;
     border-radius: 10px;
-    background-image:  linear-gradient(45deg, rgb(49, 123, 6), rgb(0, 0, 125));
+    background: #fff;
     padding: 30px;
     text-align: center;
+    background-image: linear-gradient(45deg, rgb(184, 134, 11), rgb(134, 145, 147));
+
 }
 
-#brasilInput, #tempoInput {
-
+#classicoInput , #tempoInput{
     padding: 10px;
     margin-right: 10px;
     font-size: 1.2em;
-    border-radius: 5px;
     border: 0;
-
+    border-radius: 5px;
 }
 
-
-#listarBtn, #btnLimpar, #voltar {
+#listarBtn, #limparBtn, #voltarBtn{
     color: black;
     font-weight: bold;
     background-color: #fff;
@@ -64,25 +61,22 @@ h3{
     border-radius: 7px;
 }
 
-#voltar:hover, #listarBtn:hover {
-    background-color: rgb(16, 16, 16);
-    color: white;
+#listarBtn:hover ,#voltarBtn:hover{
+    font-weight: bold;
+    color: #fff;
+    background-color: black;
 }
 
-#btnLimpar:hover {
-    background-color: rgb(216, 6, 6);
-    color: white;
-}
-
-form>button:hover {
-    background-color: rgb(16, 16, 16);
-    color: white;
+#limparBtn:hover{
+    font-weight: bold;
+    color: #fff;
+    background-color: rgb(216,6, 6);
 }
 
 .tabela{
     font-size: 1.1em;
     color: #fff;
-    background-color: rgb(10, 49, 97);
+    background-color: rgb(145, 6, 6);
     border-radius: 5px;
     border-spacing: 40px 10px; /* espaço entre colunas e linhas */
     border-collapse: separate; /* Obrigatório para o espaçamento funcionar */
@@ -93,9 +87,6 @@ form>button:hover {
     min-width: 550px;
 
 }
-
 th{
     font-size: 1.25em;
 }
-
-

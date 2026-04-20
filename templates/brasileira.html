@@ -16,6 +16,7 @@
             <br>
             <form action="{{ url_for('page_brasileira') }}" method="post">
                 <input type="text" placeholder="Nome da música" name="BRASILINPUT" id="brasilInput" required>
+                <input type="text" placeholder="Tempo de duração" name="TEMPOINPUT" id="tempoInput" required>
                 <br><br>
                 <button id="listarBtn">Listar</button>
             </form>
@@ -27,15 +28,23 @@
             <form action="{{ url_for('main') }}">
                     <button id="voltar">Voltar</button>
             </form>
-
-                <h2>Músicas listadas</h2>
-                <h3>
-                <ol>
-                    {%for musica in lista_brasil%}
-                    <li>{{musica}}</li>
-                    {% endfor %}
-                </ol></h3>
-                <br><br>
+                <br>
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Duração</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for musica in lista_brasil%}
+                        <tr>
+                            <td>{{musica.Nome}}</td>
+                            <td>{{musica.Tempo}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
                 
             
         </div>
