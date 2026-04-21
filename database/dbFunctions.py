@@ -17,3 +17,7 @@ def buscar_dados(cursor, tipo):
     cursor.execute("SELECT nome, tempo FROM Musicas WHERE tipo = ?", (tipo,))
     dados = cursor.fetchall()
     return dados
+
+def limpar_tabela(conn, cursor):
+    cursor.execute("DELETE FROM Musicas")
+    conn.commit()
