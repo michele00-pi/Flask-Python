@@ -18,35 +18,33 @@
                 <input type="text" placeholder="Nome da música" name="BRASILINPUT" id="brasilInput" required>
                 <input type="text" placeholder="Tempo de duração" name="TEMPOINPUT" id="tempoInput" required>
                 <br><br>
-                <button id="listarBtn">Listar</button>
-            </form>
-            <br>
-            <form action="{{ url_for('page_brasileira') }}" method="get">
-                <button id="btnLimpar">Limpar</button>
+                <button id="listarBtn" name="Btn" value="listar">Listar</button>
+                <br><br>
+                <button id="btnLimpar" name="Btn" value="limpar" formnovalidate>Limpar</button>
             </form>
             <br>
             <form action="{{ url_for('main') }}">
-                    <button id="voltar">Voltar</button>
+                <button id="voltar">Voltar</button>
             </form>
-                <br>
-                <table class="tabela">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Duração</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {%for musica in lista_brasil%}
-                        <tr>
-                            <td>{{musica.Nome}}</td>
-                            <td>{{musica.Tempo}}</td>
-                        </tr>
-                        {%endfor%}
-                    </tbody>
-                </table>
-                
-            
+            <br>
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Duração</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for musica in lista_brasil%}
+                    <tr>
+                        <td>{{musica.Nome}}</td>
+                        <td>{{musica.Tempo}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+
         </div>
     </div>
 </body>

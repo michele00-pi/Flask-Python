@@ -17,20 +17,16 @@ def page_brasileira():
         
     if request.method == 'POST':
 
-        nome = request.form.get("BRASILINPUT")
-        tempo = request.form.get("TEMPOINPUT")
+        Btn = request.form.get("Btn")
 
-        lista_brasil.append(
-            {
-                "Nome": nome,
-                "Tempo": tempo
-            }
-        )
+        if Btn == "limpar":
+            limpar(lista_brasil)
 
-    if request.method == 'GET':
-
-        lista_brasil.clear()
-
+        elif Btn == "listar":
+            nome = request.form.get("BRASILINPUT")
+            tempo = request.form.get("TEMPOINPUT")
+            cadastrar(nome, tempo, lista_brasil)
+        
     return render_template("brasileira.html", lista_brasil=lista_brasil)
 
 
@@ -39,44 +35,47 @@ def page_brasileira():
 def page_estrangeira():
 
     if request.method == 'POST':
+        Btn = request.form.get("Btn")
 
-        nome = request.form.get("ESTRANGEIROINPUT")
-        tempo = request.form.get("TEMPOINPUT")
+        if Btn == "limpar":
+            limpar(lista_gringo)
 
-        lista_gringo.append(
-            {
-            "Nome": nome,
-            "Tempo": tempo
-            }
-        )
-
-    if request.method == 'GET':
+        elif Btn == "listar":
+            nome = request.form.get("ESTRANGEIROINPUT")
+            tempo = request.form.get("TEMPOINPUT")
+            cadastrar(nome, tempo, lista_gringo)
         
-        lista_gringo.clear()
-    
     return render_template("estrangeira.html", lista_gringo=lista_gringo)
 
 @app.route("/classica", methods=["POST", "GET"]) #Pagina das musicas classicas
 
 def page_classica():
-
-    if request.method == 'POST':
-
-        nome = request.form.get("CLASSICOINPUT")
-        tempo = request.form.get("TEMPOINPUT")
-
-        lista_classico.append(
-            {
-            "Nome": nome,
-            "Tempo": tempo
-            }
-        )
-
-    if request.method == 'GET':
-        
-        lista_classico.clear()
     
+    if request.method == 'POST':
+        Btn = request.form.get("Btn")
+
+        if Btn == "limpar":
+             limpar(lista_classico)
+    
+        elif Btn == "listar":
+            nome = request.form.get("CLASSICOINPUT")
+            tempo = request.form.get("TEMPOINPUT")
+            cadastrar(nome, tempo, lista=lista_classico)
+           
     return render_template("classica.html", lista_classico=lista_classico)
+
+def cadastrar(nome,tempo, lista):
+
+    lista.append(
+        {
+            "Nome":nome,
+            "Tempo": tempo
+        }
+    )
+
+def limpar(lista):
+
+    lista.clear()
 
 if __name__ == "__main__":
     app.run(debug=True)

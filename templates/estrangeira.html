@@ -19,15 +19,13 @@
                 <input type="text" placeholder="Tempo de duração" name="TEMPOINPUT" id="TEMPOINPUT" required>
                 <br>
                 <br>
-                <button id="listarBtn">Listar</button>
-            </form>
-            <br>
-            <form action="{{url_for('page_estrangeira')}}" method="get">
-                <button id="limparBtn">Limpar</button>
+                <button id="listarBtn" name="Btn" value="listar">Listar</button>
+                <br><br>
+                <button id="limparBtn" name="Btn" value="limpar" formnovalidate>Limpar</button>
             </form>
             <br>
             <form action="{{ url_for('main') }}">
-                <button id="voltarBtn">Voltar</button>
+                <button id="voltarBtn" >Voltar</button>
             </form>
             <br>
 
@@ -43,8 +41,8 @@
                     <tr>
                         <td>{{musica.Nome}}</td>
                         <td>{{musica.Tempo}}</td>
-                       
-                    </tr> 
+
+                    </tr>
                     {%endfor%}
 
                 </tbody>
