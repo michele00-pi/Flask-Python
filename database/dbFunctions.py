@@ -5,5 +5,15 @@ def conectar():
     cursor = conn.cursor()
     return conn, cursor
 
-def criar_tabela(database, cursor):
+def criar_tabela(conn, cursor):
     cursor.execute("CREATE TABLE IF NOT EXISTS Musicas(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, tempo TEXT, tipo TEXT)")
+    conn.commit()
+
+def inserir_dados(conn,cursor,nome,tempo,tipo):
+    cursor.execute("INSERT INTO Musicas(nome,tempo,tipo) VALUES(?,?,?)", (nome,tempo,tipo))
+    conn.commit()
+
+def buscar_dados(cursor, tipo):
+    cursor.execute("SELECT nome, tempo FROM Musicas WHERE tipo = ?", (tipo,))
+    dados = cursor.fetchall()
+    return dados
