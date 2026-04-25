@@ -34,10 +34,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {%for musica in lista_classico%}
+                    {%for nome in dict_classico["Nome"]%}
                     <tr>
-                        <td>{{musica.Nome}}</td>
-                        <td>{{musica.Tempo}}</td>
+                        <td>{{nome}}</td>
+                        <td>{{dict_classico["Tempo"][loop.index0]}}</td> 
                     </tr>
                     {%endfor%}
                 </tbody>
