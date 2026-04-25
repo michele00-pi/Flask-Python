@@ -1,103 +1,151 @@
 body {
-    margin: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box; /* garante comportamento consistente de padding/border */
 }
 
+/* Garantir que todos usem box-sizing: inherit */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Container principal - ocupa toda a viewport */
 #container {
-
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient( 45deg, red, blue);
-    display: flex;
-    /* ativa o flexbox (organiza os elementos) */
-    flex-direction: row;
-    /* organiza os itens em linha (horizontal) */
-    justify-content: center;
-    /* centraliza no eixo horizontal */
-    align-items: center;
-    /* centraliza no eixo vertical */
-
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(45deg, red, blue);
+  display: flex;               /* ativa flexbox */
+  flex-direction: row;        /* padrão: itens em linha */
+  justify-content: center;    /* centraliza horizontal */
+  align-items: center;        /* centraliza vertical */
+  padding: 20px;              /* mantém espaço nas bordas em telas pequenas */
+  overflow: auto;             /* evita estouro em dispositivos pequenos */
 }
 
+/* Caixa central */
 #box {
-
-    width: 90%;
-    /* ocupa mais espaço em telas pequenas */
-    max-width: 800px;
-    /* limite em telas grandes */
-    border-radius: 10px;
-    background: #fff;
-    padding: 30px;
-    text-align: center;
-
+  width: 90%;                 /* ocupa mais em telas pequenas */
+  max-width: 1000px;          /* limite para telas muito grandes */
+  border-radius: 12px;
+  background: #fff;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease;
 }
 
+/* Container dos botões (itens) */
 #container-botoes {
-    display: flex;
-    /* coloca lado a lado */
-    gap: 15px;
-    /* espaço entre eles */
-    justify-content: center;
-    /* centraliza na tela */
-    flex-wrap: wrap;
-    /* quebra linha se faltar espaço (responsivo) */
+  display: flex;
+  gap: 15px;                  /* espaço entre os botões */
+  justify-content: center;
+  flex-wrap: wrap;            /* quebra linha se necessário */
+  align-items: stretch;       /* faz botões terem mesma altura quando possível */
 }
 
+/* Estilo base dos botões */
 .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 250px;
-    /* altura do botão */
-    width: 100%;
-    max-width: 250px;
-    /* controla o tamanho */
-
-    border-radius: 20px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: 1.6em;
-    font-weight: bold;
-
-    background-size: cover;
-    /* imagem cobre tudo */
-    background-position: center;
-    /* centraliza */
-    background-image: url("/static/images/musica_brasileira.png");
-
-    position: relative;
-    overflow: hidden;
-
-    transition: 0.9s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;           /* limite do botão em desktop */
+  height: 220px;              /* tamanho padrão */
+  border-radius: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.3rem;          /* usar rem para escalabilidade */
+  font-weight: 700;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  padding: 1rem;              /* garante espaçamento interno se o texto quebrar */
 }
 
-.brasileira {
-    background-image: url("/static/images/musica_brasileira.png");
-}
+/* Imagens específicas (classes mantidas) */
+.brasileira { background-image: url("/static/images/musica_brasileira.png"); }
+.estrangeira { background-image: url("/static/images/musica_estrangeira.png"); }
+.classica { background-image: url("/static/images/musica_classica.png"); }
 
-.estrangeira {
-    background-image: url("/static/images/musica_estrangeira.png");
-}
-
-.classica {
-    background-image: url("/static/images/musica_classica.png");
-}
-
+/* Efeito hover */
 .btn:hover {
-    transform: scale(1.09);
-
+  transform: scale(1.06);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
 }
 
+/* Camada escura sobre a imagem ao passar o mouse */
 .btn::before {
-    content: "";
-    /* cria o elemento fantasma */
-    position: absolute;
-    /* permite ficar por cima */
-    inset: 0;
-    /* ocupa todo o botão */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,0,0,0));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn:hover::before { opacity: 1; }
+
+/* Texto dentro do botão - garante legibilidade */
+.btn > span {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
-.btn:hover::before {
-    background: rgba(0, 0, 0, 0.1);
+/* -------------------------
+   MEDIA QUERIES (RESPONSIVO)
+   ------------------------- */
+
+/* 1) Pequenos dispositivos — telefones muito pequenos (até 400px)
+   Objetivo: reduzir altura, fonte e padding para caber sem scroll horizontal. */
+@media (max-width: 400px) {
+  #box { padding: 18px; }
+  .btn {
+    height: 160px;
+    font-size: 1rem;
+    max-width: 100%;   /* ocupa linha inteira */
+  }
+  #container { padding: 12px; height: auto; min-height: 100vh; }
+}
+
+/* 2) Telefones e phablets (401px a 768px)
+   Objetivo: layout vertical se necessário, botões maiores que em mobile pequeno. */
+@media (max-width: 768px) {
+  #container { flex-direction: column; justify-content: flex-start; padding-top: 30px; }
+  #box { width: 95%; padding: 22px; }
+  .btn {
+    height: 180px;
+    font-size: 1.1rem;
+    max-width: 420px;
+    flex: 1 1 45%;     /* permite dois por linha em telas médias */
+  }
+}
+
+/* 3) Tablets em modo paisagem e pequenos laptops (769px a 1024px)
+   Objetivo: permitir dois ou três botões por linha, ajustar espaçamentos. */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #container { flex-direction: row; padding: 30px; }
+  #box { padding: 28px; }
+  .btn {
+    height: 200px;
+    font-size: 1.2rem;
+    flex: 1 1 30%;     /* até três por linha conforme espaço */
+    max-width: 320px;
+  }
+}
+
+/* 4) Desktops e telas grandes (a partir de 1025px)
+   Objetivo: aproveitar espaço, manter limites de largura para legibilidade. */
+@media (min-width: 1025px) {
+  #box { max-width: 1000px; padding: 36px; }
+  .btn {
+    height: 240px;
+    font-size: 1.4rem;
+    max-width: 320px;
+    flex: 0 1 auto;
+  }
 }
