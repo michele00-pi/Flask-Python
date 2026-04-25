@@ -35,10 +35,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {%for musica in lista_brasil%}
+                    {%for linha in dados%}
                     <tr>
-                        <td>{{musica.Nome}}</td>
-                        <td>{{musica.Tempo}}</td>
+                        <td>{{linha[0]}}</td>
+                        <td>{{linha[1]}}</td>
                     </tr>
                     {%endfor%}
                 </tbody>
