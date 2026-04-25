@@ -37,10 +37,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {%for musica in lista_gringo%}
+                    {%for nome in dict_gringo["Nome"]%}
                     <tr>
-                        <td>{{musica.Nome}}</td>
-                        <td>{{musica.Tempo}}</td>
+                        <td>{{nome}}</td>
+                        <td>{{dict_gringo["Tempo"][loop.index0]}}</td>
 
                     </tr>
                     {%endfor%}
