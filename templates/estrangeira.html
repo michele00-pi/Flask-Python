@@ -37,10 +37,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {%for nome in dict_gringo["Nome"]%}
+                    {%for linha in dados%}
                     <tr>
-                        <td>{{nome}}</td>
-                        <td>{{dict_gringo["Tempo"][loop.index0]}}</td>
+                        <td>{{linha[0]}}</td>
+                        <td>{{linha[1]}}</td>
 
                     </tr>
                     {%endfor%}
